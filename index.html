@@ -1,23 +1,98 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style rel="stylesheet" href="src/style.css"></style>
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="src/script.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="src/style.css" />
+
+  <title>Weather Dashboard</title>
+</head>
+
+
+<body>
+  <!-- main container -->
+  <div style="max-width: 1200px; padding: 10px; margin: 0 auto;">
+
+    <!-- header container -->
+    <div class="container-fluid" style="background-color: rgb(56, 56, 56);">
+      <header style="color: white; text-align: center; padding: 5px;">
+        <h2>Weather Dashboard</h2>
+      </header>
+    </div>
+    <!-- info container -->
+    <div class="container-fluid">
+      <div class="row">
+
+
+
+        <!-- Search a for a city container -->
+        <div id="searchDiv" class="col-4 container-fluid" style="background-color: darkcyan; padding-top: 10px;">
+
+          <h6>Search for a City:</h6>
+          <div class="input-group mb-3">
+            <input type="text" class="inputValue form-control name" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button type="submit button" class="btn btn-outline-secondary button">Search</button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- weather display container -->
+        <div id="weatherDiv" class="display col-8 container-fluid" style="background-color: chartreuse;">
+          <div class="row">
+            <div class="container-fluid">
+              <div class="card" style="margin-top: 15px; margin-bottom: 15px; padding: 10px;">
+                
+                <p id = "place" class="card-title">Forecast</p>
+                
+               <span> Temperature: <p id = "degrees" class="card-title">Temperature</p></span>
+                
+                <p id = "hum" class="card-text">Humidity:</p>
+                
+                <p id = "windy" class="card-text">Wind Speed:</p>
+                
+                <p id = "UVIndex" class="card-text">UV Index:</p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="container-fluid">
+              <h5>5-Day Forecast</h5>
+              <div class="card" style="margin-top: 15px; margin-bottom: 15px; padding: 10px;">
+                <h6 class="card-title">Date</h6>
+                <p class="card-text">Sun</p>
+                <p class="card-text">Temperature:</p>
+                <p class="card-text">Humidity:</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="src/script.js"></script>
 </body>
+
 </html>
