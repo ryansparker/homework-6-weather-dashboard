@@ -8,13 +8,14 @@
 }
 
 .fiveday {
-    color: white;
-    margin-top: 5px; 
-    margin-bottom: 15px;
     margin-right: 0px;
     margin-left: 0px;
     column-width: 10px;
-    font-size: small;
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+    padding: 10px;
+
+   
 }
 
 #headingDiv {

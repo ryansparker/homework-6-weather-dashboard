@@ -26,6 +26,9 @@ $(document).ready(function () {
         searchWeather($(this).text());
         searchFiveDay(city);
     })
+
+    //SEARCH DAILY WEATHER FUNCTION
+
    function searchWeather(city) {
        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
             .then(response => response.json())
@@ -54,6 +57,8 @@ $(document).ready(function () {
             })
    }
 
+   //5 DAY FORECAST FUNCTION
+
    function searchFiveDay(city) {
        fetch ("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
        .then(response => response.json())
@@ -65,7 +70,7 @@ $(document).ready(function () {
                     console.log(day);
                 }
             }
-// console.log(data);
+
 
         });
    }
