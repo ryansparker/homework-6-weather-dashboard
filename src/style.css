@@ -6,3 +6,32 @@
 #weatherDiv {
     background-color: whitesmoke;
 }
+
+.fiveday {
+    margin-right: 0px;
+    margin-left: 0px;
+    column-width: 10px;
+    margin-top: 0px; 
+    margin-bottom: 5px; 
+    padding: 10px;
+    font-size: small;
+
+   
+}
+
+#headingDiv {
+    background-color: rgb(56, 56, 56);
+}
+
+#heading {
+    color: white; 
+    text-align: center; 
+    padding: 5px;
+}
+
+#displayCard {
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+    padding: 10px;
+}
+

@@ -12,10 +12,22 @@ var UVp = document.getElementById("UV");
 
 var searched = document.getElementById("searchedCity");
 
+var historyArray = [];
+
 // button.addEventListener("click", function(){
 $(document).ready(function () {
     $("#subBtn").on("click", function () {
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
+    var city = inputValue.value;
+    searchWeather(city);    
+    searchFiveDay(city);        
+
+    });
+    $("#searchedCity").on("click", "h5", function(){
+        searchWeather($(this).text());
+        searchFiveDay(city);
+    })
+   function searchWeather(city) {
+       fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
             .then(response => response.json())
             .then(data => {
 
@@ -26,66 +38,37 @@ $(document).ready(function () {
                 var windValue = data["wind"]["speed"];
                 // var UVValue = data["main"]["humidity"];
 
-                place.innerHTML = placeValue;
+                place.innerHTML = placeValue + " ( " + new Date().toLocaleDateString() + " )";
                 degrees.innerHTML = "Temperature: " + degreesValue + "° F";
                 humy.innerHTML = "Humidity: " + humValue + "%";
                 windspeed.innerHTML = "Wind Speed: " + windValue + " kpr";
 
+                if(historyArray.indexOf(placeValue)===-1){
+                    historyArray.push(placeValue);
+                    var button = $("<h5>").text(placeValue);
+                    $("#searchedCity").prepend(button);
+                }
                 // UVp.innerHTML = "UV: " + UVValue;
-                
-                $("#searchedCity").prepend("<br><hr>" + placeValue);
+            
                 
             })
-            
+   }
 
-    });
-   
+   function searchFiveDay(city) {
+       fetch ("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
+       .then(response => response.json())
+        .then(data => {
+        
+            for (var i=0; i<data.list.length; i++){
+                if (data.list[i].dt_txt.indexOf("12:00:00")!==-1) {
+                    var day = data.list[i];
+                    console.log(day);
+                }
+            }
+// console.log(data);
+
+        });
+   }
 
 });
 
-//     $("#random-button").on("click", function() {
-
-//       // Create a string which will hold the lottery number
-//       var lottoNumber = "";
-
-//       // Then initiate a loop to generate 9 separate numbers
-//       for (var i = 0; i < 9; i++) {
-
-//         // For each iteration, generate a new random number between 0 and 9.
-//         var random = Math.floor(Math.random() * 10);
-
-//         // Take this number and then add it to the rest of the string.
-//         // In essence, we are iteratively building a string of numbers. (e.g. First: 1, Second: 13, Third: 135, etc.)
-//         lottoNumber = random + lottoNumber;
-
-//       }
-
-//       // ... and then dump the random number into our random-number div.
-//       $("#random-number").prepend("<br><hr>" + lottoNumber);
-
-//     });
-
-//   });
-
-
-//----------------------------------------------------------------
-//experimenting with Bujumbura code also check out movieJSONdump
-
-// var inputValue = document.querySelector(".inputValue")
-// var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+inputValue.value+"&appid=974d902c878dcae370e669f524ad6ba0"
-
-//     // Here we run our AJAX call to the OpenWeatherMap API
-
-// button.addEventListener("click", function(){
-
-//     $.ajax ({
-//     url: queryURL,
-//     method: "GET"
-// })
-
-// .then(function(response){
-
-//     $("#city").html("<h1>" + response.name + "</h1>");
-//     $("#wind").text("Wind Speed: " + response.wind.speed);
-// })
-// });

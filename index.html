@@ -20,8 +20,8 @@
   <div style="max-width: 1200px; padding: 10px; margin: 0 auto;">
 
     <!-- header container -->
-    <div class="container-fluid" style="background-color: rgb(56, 56, 56);">
-      <header style="color: white; text-align: center; padding: 5px;">
+    <div id="headingDiv" class="container-fluid">
+      <header id = "heading">
         <h2>Weather Dashboard</h2>
       </header>
     </div>
@@ -38,14 +38,12 @@
           <div class="input-group mb-3">
             <input type="text" class="inputValue form-control name" aria-describedby="basic-addon2">
             <div class="input-group-append">
-              
+
               <button id="subBtn" type="submit button" class="btn btn-outline-secondary button">Search</button>
             </div>
           </div>
           <div id="searchedCity" class="card">
-            
-      
-          
+
           </div>
         </div>
 
@@ -55,33 +53,69 @@
         <div id="weatherDiv" class="display col-8 container-fluid">
           <div class="row">
             <div class="container-fluid">
-              <div class="card" style="margin-top: 15px; margin-bottom: 15px; padding: 10px;">
-                
-                <h5 id = "place" class="card-title">&nbsp</h5>
-                
-               <p id = "degrees" class="card-title">Temperature:</p>
-                
-                <p id = "hum" class="card-text">Humidity:</p>
-                
-                <p id = "windy" class="card-text">Wind Speed:</p>
-              
+              <div class="card" id = "displayCard">
+
+                <h5 id="place" class="card-title">&nbsp</h5>
+
+                <p id="degrees" class="card-title">Temperature:</p>
+
+                <p id="hum" class="card-text">Humidity:</p>
+
+                <p id="windy" class="card-text">Wind Speed:</p>
+
                 <!-- <p id = "UVIndex" class="card-text">UV Index:</p> -->
-                
+
               </div>
             </div>
           </div>
           <div class="row">
             <div class="container-fluid">
+              
               <h5>5-Day Forecast</h5>
-              <div class="card" style="margin-top: 15px; margin-bottom: 15px; padding: 10px;">
-                <h6 class="card-title">Date</h6>
-                <p class="card-text">Sun</p>
-                <p class="card-text">Temperature:</p>
-                <p class="card-text">Humidity:</p>
-              </div>
+              
+              <div class="row">
+                <div class="fiveday row container-fluid">
 
+                  <div class="card text-white bg-primary col-sm fiveday">
+                    <h6 class="card-title">Date</h6>
+                    <p class="card-text">Sun</p>
+                    <p class="card-text">Temperature:</p>
+                    <p class="card-text">Humidity:</p>
+                  </div>
+
+                  <div class="card text-white bg-primary col-sm fiveday">
+                    <h6 class="card-title">Date</h6>
+                    <p class="card-text">Sun</p>
+                    <p class="card-text">Temperature:</p>
+                    <p class="card-text">Humidity:</p>
+                  </div>
+
+                  <div class="card text-white bg-primary col-sm fiveday">
+                    <h6 class="card-title">Date</h6>
+                    <p class="card-text">Sun</p>
+                    <p class="card-text">Temperature:</p>
+                    <p class="card-text">Humidity:</p>
+                  </div>
+
+                  <div class="card text-white bg-primary col-sm fiveday">
+                    <h6 class="card-title">Date</h6>
+                    <p class="card-text">Sun</p>
+                    <p class="card-text">Temperature:</p>
+                    <p class="card-text">Humidity:</p>
+                  </div>
+
+                  <div class="card text-white bg-primary col-sm fiveday">
+                    <h6 class="card-title">Date</h6>
+                    <p class="card-text">Sun</p>
+                    <p class="card-text">Temperature:</p>
+                    <p class="card-text">Humidity:</p>
+                  </div>
+                
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
