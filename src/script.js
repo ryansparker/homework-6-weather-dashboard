@@ -69,7 +69,52 @@ $(document).ready(function () {
 
                 var UVValue = data["value"];
 
-                UVIndex.innerHTML = "UV Index: " + UVValue;
+                UVIndex.innerHTML = UVValue;
+
+                //--------------------------------------
+//COLOR CHANGE
+
+function updateBg() {
+    
+    $("#UV").each(function () {
+        if (UVValue <2) {
+            $(this).addClass("low");
+            $(this).removeClass("moderate");
+            $(this).removeClass("high");
+            $(this).removeClass("veryHigh");
+            $(this).removeClass("extreme");
+        }
+        else if (UVValue <6 && UVValue >3) {
+            $(this).removeClass("low");
+            $(this).addClass("moderate");
+            $(this).removeClass("high");
+            $(this).removeClass("veryHigh");
+            $(this).removeClass("extreme");
+
+        }  else if (UVValue <8 && UVValue >6) {
+            $(this).removeClass("low");
+            $(this).removeClass("moderate");
+            $(this).addClass("high");
+            $(this).removeClass("veryHigh");
+            $(this).removeClass("extreme");
+        }  
+        else  if (UVValue <11 && UVValue >8) {
+            $(this).removeClass("low");
+            $(this).removeClass("moderate");
+            $(this).removeClass("high");
+            $(this).addClass("veryHigh");
+            $(this).removeClass("extreme");
+        }
+        else  if (UVValue >=11) {
+            $(this).removeClass("low");
+            $(this).removeClass("moderate");
+            $(this).removeClass("high");
+            $(this).removeClass("veryHigh");
+            $(this).addClass("extreme");
+        }
+    });
+}
+updateBg();
                 })
 
 
