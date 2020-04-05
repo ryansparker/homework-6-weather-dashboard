@@ -20,22 +20,23 @@ var weatherFivep = document.getElementsByClassName("weatherFive");
 var tempFivep = document.getElementsByClassName("tempFive");
 var humFivep = document.getElementsByClassName("humFive");
 
+const cards = document.querySelectorAll(".fivedayCard");
 
 // button.addEventListener("click", function(){
 $(document).ready(function () {
     $("#subBtn").on("click", function () {
-        var city = inputValue.value;
+        const city = inputValue.value;
         searchWeather(city);
         searchFiveDay(city);
 
     });
     $("#searchedCity").on("click", "h5", function () {
+        const city = inputValue.value;
         searchWeather($(this).text());
         searchFiveDay(city);
     })
 
     //SEARCH DAILY WEATHER FUNCTION
-
     function searchWeather(city) {
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
 
@@ -58,64 +59,63 @@ $(document).ready(function () {
 
 
                 //UV INDEX
-
                 var x = data["coord"]["lat"];
                 var y = data["coord"]["lon"];
 
                 fetch("http://api.openweathermap.org/data/2.5/uvi?appid=974d902c878dcae370e669f524ad6ba0&lat=" + x + "&lon=" + y + "")
-                .then(response => response.json())
-                .then(data => {
+                    .then(response => response.json())
+                    .then(data => {
 
 
-                var UVValue = data["value"];
+                        var UVValue = data["value"];
 
-                UVIndex.innerHTML = UVValue;
+                        UVIndex.innerHTML = UVValue;
 
-                //--------------------------------------
-//COLOR CHANGE
+                        //--------------------------------------
+                        //COLOR CHANGE
 
-function updateBg() {
-    
-    $("#UV").each(function () {
-        if (UVValue <2) {
-            $(this).addClass("low");
-            $(this).removeClass("moderate");
-            $(this).removeClass("high");
-            $(this).removeClass("veryHigh");
-            $(this).removeClass("extreme");
-        }
-        else if (UVValue <6 && UVValue >3) {
-            $(this).removeClass("low");
-            $(this).addClass("moderate");
-            $(this).removeClass("high");
-            $(this).removeClass("veryHigh");
-            $(this).removeClass("extreme");
+                        function updateBg() {
 
-        }  else if (UVValue <8 && UVValue >6) {
-            $(this).removeClass("low");
-            $(this).removeClass("moderate");
-            $(this).addClass("high");
-            $(this).removeClass("veryHigh");
-            $(this).removeClass("extreme");
-        }  
-        else  if (UVValue <11 && UVValue >8) {
-            $(this).removeClass("low");
-            $(this).removeClass("moderate");
-            $(this).removeClass("high");
-            $(this).addClass("veryHigh");
-            $(this).removeClass("extreme");
-        }
-        else  if (UVValue >=11) {
-            $(this).removeClass("low");
-            $(this).removeClass("moderate");
-            $(this).removeClass("high");
-            $(this).removeClass("veryHigh");
-            $(this).addClass("extreme");
-        }
-    });
-}
-updateBg();
-                })
+                            $("#UV").each(function () {
+                                if (UVValue < 2) {
+                                    $(this).addClass("low");
+                                    $(this).removeClass("moderate");
+                                    $(this).removeClass("high");
+                                    $(this).removeClass("veryHigh");
+                                    $(this).removeClass("extreme");
+                                }
+                                else if (UVValue < 6 && UVValue > 3) {
+                                    $(this).removeClass("low");
+                                    $(this).addClass("moderate");
+                                    $(this).removeClass("high");
+                                    $(this).removeClass("veryHigh");
+                                    $(this).removeClass("extreme");
+
+                                } else if (UVValue < 8 && UVValue > 6) {
+                                    $(this).removeClass("low");
+                                    $(this).removeClass("moderate");
+                                    $(this).addClass("high");
+                                    $(this).removeClass("veryHigh");
+                                    $(this).removeClass("extreme");
+                                }
+                                else if (UVValue < 11 && UVValue > 8) {
+                                    $(this).removeClass("low");
+                                    $(this).removeClass("moderate");
+                                    $(this).removeClass("high");
+                                    $(this).addClass("veryHigh");
+                                    $(this).removeClass("extreme");
+                                }
+                                else if (UVValue >= 11) {
+                                    $(this).removeClass("low");
+                                    $(this).removeClass("moderate");
+                                    $(this).removeClass("high");
+                                    $(this).removeClass("veryHigh");
+                                    $(this).addClass("extreme");
+                                }
+                            });
+                        }
+                        updateBg();
+                    })
 
 
                 //PREVIOUS SEARCH LIST
@@ -130,39 +130,50 @@ updateBg();
             })
 
     }
-
-
+   
     //5 DAY FORECAST FUNCTION
 
     function searchFiveDay(city) {
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
             .then(response => response.json())
-            .then(data => {
-                
+            .then( data => {
+                console.log("OBJECT:", data)
+                const days = data.list
 
-                for (var i = 0; i < 5; i++) {
-                    // if (data.list[i].dt_txt.indexOf("12:00:00") !== -1) {
-                        var day = data.list[i];
-                        
-console.log(day);
+                for (let i = 1; i < days.length; i += 8 ) {
+                    const day = days[i]
+                    const card = cards[(i - 1) / 8]
 
-                        var dateFiveValue = day["sys"]["dt_text"];
-                        console.log(dateFiveValue);
+                    console.log("DAY", day)
 
-                        var weatherFiveValue = day["weather"]["0"];
+                    const dateFiveValue = new Date(day.dt_txt)
+                    console.log("DATE", dateFiveValue)
 
-                        var tempFiveValue = day["main"]["temp"];
+                    const dateString = dateFiveValue.toLocaleDateString()
 
-                        var humFiveValue = day["main"]["humidity"];
+                    console.log(dateFiveValue);
 
-                        dateFivep.innerHTML = dateFiveValue;
-                        weatherFivep.innerHTML = weatherFiveValue;
-                        tempFivep.innerHTML = tempFiveValue;
-                        humFivep.innerHTML = humFiveValue;
-                    // }
+                    var weatherFiveValue = day["weather"]["0"]["main"];
+                    console.log(weatherFiveValue);
+
+                    var tempFiveValue = day["main"]["temp"];
+                    console.log(tempFiveValue);
+
+                    var humFiveValue = day["main"]["humidity"];
+                    console.log(humFiveValue);
+
+                    const dateDisplay = card.querySelector(".dateFive")
+                    dateDisplay.textContent = dateString;
+
+                    const weatherDisplay = card.querySelector(".weatherFive")
+                    weatherDisplay.textContent = weatherFiveValue;
+
+                    const tempDisplay = card.querySelector(".tempFive")
+                    tempDisplay.textContent = tempFiveValue;
+
+                    const humDisplay = card.querySelector(".humFive")
+                    humDisplay.textContent = humFiveValue;
                 }
-
-
             });
     }
 
