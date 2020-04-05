@@ -166,13 +166,15 @@ $(document).ready(function () {
                     dateDisplay.textContent = dateString;
 
                     const weatherDisplay = card.querySelector(".weatherFive")
-                    weatherDisplay.textContent = weatherFiveValue;
+                    weatherDisplay.textContent = "Weather: " + weatherFiveValue;
 
                     const tempDisplay = card.querySelector(".tempFive")
-                    tempDisplay.textContent = tempFiveValue;
+                    tempDisplay.textContent = "Temp: " + tempFiveValue + "° F";
 
                     const humDisplay = card.querySelector(".humFive")
-                    humDisplay.textContent = humFiveValue;
+                    humDisplay.textContent = "Humidity: " + humFiveValue + "%";
+                
+                    // humy.innerHTML = "Humidity: " + humValue + "%";
                 }
             });
     }
