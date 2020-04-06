@@ -29,7 +29,7 @@ const inputCity = $(".inputValue");
 //--------------------------------------
 // SEARCH BAR
 $(document).ready(function () {
-    const savedCity = localStorage.getItem("city")
+    const savedCity = localStorage.getItem("city") || "Philadelphia"
     if ( savedCity ) {
         searchWeather(savedCity);
         searchFiveDay(savedCity);       
