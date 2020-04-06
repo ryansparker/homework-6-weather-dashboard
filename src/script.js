@@ -1,36 +1,48 @@
 
 // VARIABLES SEARCH
-var button = document.querySelector(".button");
-var inputValue = document.querySelector(".inputValue")
+const button = document.querySelector(".button");
+const inputValue = document.querySelector(".inputValue")
 
 // VARIABLES PAST SEARCH
-var searched = document.getElementById("searchedCity");
-var historyArray = [];
+const searched = document.getElementById("searchedCity");
+const historyArray = [];
 
 // VARIABLES DISPLAY
-var place = document.getElementById("place");
-var degrees = document.getElementById("degrees");
-var humy = document.getElementById("hum");
-var windspeed = document.getElementById("windy");
-var UVIndex = document.getElementById("UV");
+const place = document.getElementById("place");
+const weatherIcon = document.getElementById("weatherIcon");
+const degrees = document.getElementById("degrees");
+const humy = document.getElementById("hum");
+const windspeed = document.getElementById("windy");
+const UVIndex = document.getElementById("UV");
 
 //VARIABLES 5 DAY DISPLAY
-var dateFivep = document.getElementsByClassName("dateFive");
-var weatherFivep = document.getElementsByClassName("weatherFive");
-var tempFivep = document.getElementsByClassName("tempFive");
-var humFivep = document.getElementsByClassName("humFive");
+const dateFivep = document.getElementsByClassName("dateFive");
+const weatherFivep = document.getElementsByClassName("weatherFive");
+const tempFivep = document.getElementsByClassName("tempFive");
+const humFivep = document.getElementsByClassName("humFive");
 
 const cards = document.querySelectorAll(".fivedayCard");
 
-// button.addEventListener("click", function(){
+const inputCity = $(".inputValue");
+
+
+//--------------------------------------
+// SEARCH BAR
 $(document).ready(function () {
+    const savedCity = localStorage.getItem("city")
+    if ( savedCity ) {
+        searchWeather(savedCity);
+        searchFiveDay(savedCity);       
+    }
+
     $("#subBtn").on("click", function () {
+        event.preventDefault();
         const city = inputValue.value;
         searchWeather(city);
         searchFiveDay(city);
-
     });
     $("#searchedCity").on("click", "h5", function () {
+        event.preventDefault();
         const city = inputValue.value;
         searchWeather($(this).text());
         searchFiveDay(city);
@@ -39,41 +51,38 @@ $(document).ready(function () {
     //SEARCH DAILY WEATHER FUNCTION
     function searchWeather(city) {
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
-
             .then(response => response.json())
             .then(data => {
+                if ( data.cod !== 200 ) {
+                    return
+                }
 
-                var placeValue = data["name"];
+                window.localStorage.setItem("city", city)
 
-                var degreesValue = data["main"]["temp"];
-
-                var windValue = data["wind"]["speed"];
-
-                var humValue = data["main"]["humidity"];
+                const placeValue = data.name;
+                const weatherIconValue = data.weather[0].icon;
+                const degreesValue = data.main.temp;
+                const windValue = data.wind.speed;
+                const humValue = data.main.humidity;
 
                 place.innerHTML = placeValue + " ( " + new Date().toLocaleDateString() + " )";
+                weatherIcon.src = "http://openweathermap.org/img/wn/"+ weatherIconValue +".png";
                 degrees.innerHTML = "Temperature: " + degreesValue + "° F";
                 windspeed.innerHTML = "Wind Speed: " + windValue + " kph";
                 humy.innerHTML = "Humidity: " + humValue + "%";
 
 
-
                 //UV INDEX
-                var x = data["coord"]["lat"];
-                var y = data["coord"]["lon"];
+                const x = data["coord"]["lat"];
+                const y = data["coord"]["lon"];
 
                 fetch("http://api.openweathermap.org/data/2.5/uvi?appid=974d902c878dcae370e669f524ad6ba0&lat=" + x + "&lon=" + y + "")
                     .then(response => response.json())
                     .then(data => {
-
-
-                        var UVValue = data["value"];
-
+                        const UVValue = data.value;
                         UVIndex.innerHTML = UVValue;
-
-                        //--------------------------------------
+                      
                         //COLOR CHANGE
-
                         function updateBg() {
 
                             $("#UV").each(function () {
@@ -117,7 +126,7 @@ $(document).ready(function () {
                         updateBg();
                     })
 
-
+                //--------------------------------------
                 //PREVIOUS SEARCH LIST
                 if (historyArray.indexOf(placeValue) === -1) {
                     historyArray.push(placeValue);
@@ -130,52 +139,49 @@ $(document).ready(function () {
             })
 
     }
-   
+
+    //--------------------------------------
     //5 DAY FORECAST FUNCTION
 
     function searchFiveDay(city) {
         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=974d902c878dcae370e669f524ad6ba0&units=imperial")
             .then(response => response.json())
-            .then( data => {
-                console.log("OBJECT:", data)
+            .then(data => {
+                if ( data.cod != 200 ) {
+                    return
+                }
+
                 const days = data.list
 
-                for (let i = 1; i < days.length; i += 8 ) {
+                //LOOPING THROUGH THE DAYS. THE API HAS 40 SECTIONS—8 TIMES OF DAY FOR EACH OF 5 DAYS
+                for (let i = 1; i < days.length; i += 8) {
                     const day = days[i]
                     const card = cards[(i - 1) / 8]
 
-                    console.log("DAY", day)
-
                     const dateFiveValue = new Date(day.dt_txt)
-                    console.log("DATE", dateFiveValue)
 
                     const dateString = dateFiveValue.toLocaleDateString()
 
-                    console.log(dateFiveValue);
+                    const weatherFiveValue = day.weather[0].icon;
 
-                    var weatherFiveValue = day["weather"]["0"]["main"];
-                    console.log(weatherFiveValue);
+                    const tempFiveValue = day.main.temp;
 
-                    var tempFiveValue = day["main"]["temp"];
-                    console.log(tempFiveValue);
-
-                    var humFiveValue = day["main"]["humidity"];
-                    console.log(humFiveValue);
+                    const humFiveValue = day.main.humidity;
 
                     const dateDisplay = card.querySelector(".dateFive")
-                    dateDisplay.textContent = dateString;
+                    dateDisplay.textContent = dateString
 
                     const weatherDisplay = card.querySelector(".weatherFive")
-                    weatherDisplay.textContent = "Weather: " + weatherFiveValue;
+                    weatherDisplay.src = "http://openweathermap.org/img/wn/"+ weatherFiveValue +".png"
 
                     const tempDisplay = card.querySelector(".tempFive")
-                    tempDisplay.textContent = "Temp: " + tempFiveValue + "° F";
+                    tempDisplay.textContent = "Temp: " + tempFiveValue + "° F"
 
                     const humDisplay = card.querySelector(".humFive")
                     humDisplay.textContent = "Humidity: " + humFiveValue + "%";
                 
-                    // humy.innerHTML = "Humidity: " + humValue + "%";
                 }
+
             });
     }
 
