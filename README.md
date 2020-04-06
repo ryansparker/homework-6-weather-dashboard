@@ -29,13 +29,11 @@ https://openweathermap.org/api/uvi
 YouTube:
 https://www.youtube.com/watch?v=GXrDEA3SIOQ
 
-
-
 # URL
-https://ryansparker.github.io/work-day-scheduler/
+https://ryansparker.github.io/weather-dashboard/
 
 # GitHub Repository
-https://github.com/ryansparker/work-day-scheduler
+https://github.com/ryansparker/weather-dashboard
 
 © 2020 Ryan Parker All Rights Reserved.
 
