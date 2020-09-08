@@ -130,6 +130,16 @@ function citySearch(city) {
                 historyArray.push(placeValue)
                 
                 const button = document.createElement('h5')
+                button.style.color="#333333"
+                button.style.backgroundColor="#FBF2E2"
+                button.style.borderWidth="1px"
+                button.style.borderStyle="solid"
+                button.style.borderColor="#BA5624"
+                button.style.padding="10px"
+                button.style.margin="8px 0 8px 0"
+                
+
+                     
                 button.onclick = () => {
                     citySearch(placeValue)
                     searchFiveDay(city)

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Raleway&display=swap" rel="stylesheet">    <link rel="stylesheet" href="src/index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Raleway&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="src/index.css" />
     <title>Weather Dashboard</title>
 </head>
 
@@ -12,7 +14,7 @@
     <main class="wrapper">
 
         <div class="content-wrapper">
-    
+
             <section class="search">
                 <div class="search-input">
                     <input type="text" id="searchBar" name="searchBar" placeholder="Enter a city">
@@ -32,9 +34,9 @@
 
                     <div class="section-place">
                         <h1 id="place" class="place"></h1>
-                        <div class="date" >
+                        <div class="date">
                             <div id="date"></div>
-            
+
 
                         </div>
                     </div>
@@ -42,34 +44,31 @@
                         <img id="weatherIcon" class="weather-icon" />
                     </div>
                     <div class="section-other-info">
-                        <div class="section-title">
-                            <div class="uv-circle">
-                                <p id="UV" class="uv-number">7.5</p>
-                            </div>
-                            <h3 >UV Index</3>
-                        </div>
-
+                        
                         <div class="section-title humidity">
                             <h3 id="hum">humidity:</h3>
                         </div>
+                        
                         <div class="section-title wind">
-                            <h3 id="windy">wind: 75 kph</h3>
+                            <h3 id="windy">wind:</h3>
                         </div>
-
-                        <div class="unit">
-                            <label for="cel">°C</label>
-                            <input type="radio" id="cel" name="unit">
-
-                            <input type="radio" id="cel" name="unit" checked>
-                            <label for="fah">°F</label>
+                        
+                        
+                        <div class="section-title uv-index">
+                            <div>
+                            <h3>UV Index: </h3>
+                        </div>
+                            <div class="uv-circle">
+                                <p id="UV" class="uv-number">7.5</p>
+                            </div>
                         </div>
                     </div>
                 </div>
         </div>
         </div>
-      
 
-           
+
+
         </div>
         </section>
 
@@ -79,45 +78,45 @@
 
             <h4 class="upcoming-weather-title">5 day forecast</h4>
 
-           
-          
-              <div class="fiveday row container-fluid upcoming-days fiveday">
+
+
+            <div class="fiveday row container-fluid upcoming-days fiveday">
 
                 <div class="upcoming-day weatherFive card fiveday fivedayCard   ">
-                  <h6 class="dateFive card-title">Date</h6>
-                  <img class="weatherFive card-text" />
-                  <p class="tempFive card-text">Temperature</p>
-                  <p class="humFive card-text">Humidity</p>
+                    <h6 class="dateFive card-title">Date</h6>
+                    <img class="weatherFive card-text" />
+                    <p class="tempFive card-text">Temperature</p>
+                    <p class="humFive card-text">Humidity</p>
                 </div>
 
                 <div class="upcoming-day weatherFive card fiveday fivedayCard   ">
-                  <h6 class="dateFive card-title">Date</h6>
-                  <img class="weatherFive card-text" />
-                  <p class="tempFive card-text">Temperature</p>
-                  <p class="humFive card-text">Humidity</p>
+                    <h6 class="dateFive card-title">Date</h6>
+                    <img class="weatherFive card-text" />
+                    <p class="tempFive card-text">Temperature</p>
+                    <p class="humFive card-text">Humidity</p>
                 </div>
 
                 <div class="upcoming-day weatherFive card fiveday fivedayCard   ">
-                  <h6 class="dateFive card-title">Date</h6>
-                  <img class="weatherFive card-text" />
-                  <p class="tempFive card-text">Temperature</p>
-                  <p class="humFive card-text">Humidity</p>
+                    <h6 class="dateFive card-title">Date</h6>
+                    <img class="weatherFive card-text" />
+                    <p class="tempFive card-text">Temperature</p>
+                    <p class="humFive card-text">Humidity</p>
                 </div>
 
                 <div class="upcoming-day weatherFive card fiveday fivedayCard   ">
-                  <h6 class="dateFive card-title">Date</h6>
-                  <img class="weatherFive card-text" />
-                  <p class="tempFive card-text">Temperature</p>
-                  <p class="humFive card-text">Humidity</p>
+                    <h6 class="dateFive card-title">Date</h6>
+                    <img class="weatherFive card-text" />
+                    <p class="tempFive card-text">Temperature</p>
+                    <p class="humFive card-text">Humidity</p>
                 </div>
 
                 <div class="upcoming-day weatherFive card fiveday fivedayCard   ">
-                  <h6 class="dateFive card-title">Date</h6>
-                  <img class="weatherFive card-text" />
-                  <p class="tempFive card-text">Temperature</p>
-                  <p class="humFive card-text">Humidity</p>
+                    <h6 class="dateFive card-title">Date</h6>
+                    <img class="weatherFive card-text" />
+                    <p class="tempFive card-text">Temperature</p>
+                    <p class="humFive card-text">Humidity</p>
                 </div>
-              </div>
+            </div>
 
 
 
@@ -157,17 +156,17 @@
                     <p class="humFive card-text">Humidity</p>
                   </div> -->
 
- 
-            
 
 
 
-            </div>
+
+
+        </div>
         </div>
     </main>
 
     <script src="src/index.js"></script>
-    
+
 </body>
 
 </html>
