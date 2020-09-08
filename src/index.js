@@ -28,32 +28,32 @@ const cards = document.querySelectorAll(".fivedayCard");
 
 const iconMap = {
     Thunderstorm: {
-        background: 'assets/bg-thunderstorm.jpg',
-        icon: 'cloud.svg'
+        background: 'src/assets/bg-thunderstorm.jpg',
+        icon: 'src/assets/thunderstorm.svg'
     },
     Drizzle: {
-        background: 'assets/bg-drizzle.jpg',
-        icon: 'assets/drizzle.svg'
+        background: 'src/assets/bg-drizzle.jpg',
+        icon: 'src/assets/drizzle.svg'
     },
     Rain: {
-        background: 'assets/bg-rain.jpg',
-        icon: 'assets/rain.svg'
+        background: 'src/assets/bg-rain.jpg',
+        icon: 'src/assets/rain.svg'
     },
     Snow: {
-        background: 'assets/bg-snow.jpg',
-        icon: 'assets/snow.svg'
+        background: 'src/assets/bg-snow.jpg',
+        icon: 'src/assets/snow.svg'
     },
     Atmosphere: {
-        background: 'assets/bg-atmosphere.jpg',
-        icon: 'assets/atmosphere.svg'
+        background: 'src/assets/bg-atmosphere.jpg',
+        icon: 'src/assets/atmosphere.svg'
     },
     Clear: {
-        background: 'assets/bg-clear.jpg',
-        icon: 'assets/clear.svg'
+        background: 'src/assets/bg-clear.jpg',
+        icon: 'src/assets/clear.svg'
     },
     Clouds: {
-        background: 'assets/bg-clouds.jpg',
-        icon: 'assets/clouds.svg'
+        background: 'src/assets/bg-clouds.jpg',
+        icon: 'src/assets/clouds.svg'
     }
 
 }
@@ -93,14 +93,21 @@ function citySearch(city) {
         .then(data => {
             console.log(data)
 
+            localStorage.setItem("city", city)
+
             const placeValue = data.name;
-            const weatherIconValue = data.weather[0].icon;
             const degreesValue = data.main.temp;
             const windValue = data.wind.speed;
             const humValue = data.main.humidity;
+
+            const weatherIconValue = data.weather[0].icon;
+            const weatherId=data.weather[0].id
             const weatherValue = data.weather[0].main
 
             const { background, icon } = iconMap[weatherValue] || {}
+
+            
+
 
             place.innerHTML = placeValue;
             placeDate.innerHTML = new Date().toLocaleDateString()
@@ -108,7 +115,8 @@ function citySearch(city) {
             degrees.innerHTML = Math.floor(degreesValue) + "°";
             windspeed.innerHTML = "Wind Speed: " + windValue + " kph";
             humy.innerHTML = "Humidity: " + humValue + "%";
-            backgroundElement.style.backgroundImage = `url("${background}");`
+            backgroundElement.style.backgroundImage = `url('${background}')`
+            console.log(backgroundElement)
 
             //UV INDEX
             const x = data["coord"]["lat"];
@@ -124,15 +132,15 @@ function citySearch(city) {
                     function updateBg() {
                         if (UVValue < 2) {
                             UVCircle.style.backgroundColor = "#00ff2a"
-                            UVIndex.style.color = "#67625E"
+                            UVIndex.style.color = "#333333"
                         }
                         else if (UVValue < 6 && UVValue > 3) {
                             UVCircle.style.backgroundColor = "#ffff00"
-                            UVIndex.style.color = "#67625E"
+                            UVIndex.style.color = "#333333"
 
                         } else if (UVValue < 8 && UVValue > 6) {
                             UVCircle.style.backgroundColor = "#ff8c00"
-                            UVIndex.style.color = "#67625E"
+                            UVIndex.style.color = "#333333"
                         }
                         else if (UVValue < 11 && UVValue > 8) {
                             UVCircle.style.backgroundColor = "#ff0000"
@@ -140,7 +148,7 @@ function citySearch(city) {
                         }
                         else if (UVValue >= 11) {
                             UVCircle.style.backgroundColor = "#c300ff"
-                            UVIndex.style.color = "#67625E"
+                            UVIndex.style.color = "#333333"
                         }
                     }
                     updateBg();
@@ -151,14 +159,6 @@ function citySearch(city) {
                 historyArray.push(placeValue)
                 
                 const button = document.createElement('h5')
-                button.style.color="#333333"
-                button.style.backgroundColor="#FBF2E2"
-                button.style.borderWidth="1px"
-                button.style.borderStyle="solid"
-                button.style.borderColor="#BA5624"
-                button.style.padding="10px"
-                button.style.margin="8px 0 8px 0"
-                
 
                      
                 button.onclick = () => {
@@ -194,7 +194,9 @@ function searchFiveDay(city) {
 
                 const dateString = dateFiveValue.toLocaleDateString()
 
-                const weatherFiveValue = day.weather[0].icon;
+                //const weatherFiveValue = day.weather[0].icon;
+                const weatherValue = day.weather[0].main
+                const { icon } = iconMap[weatherValue]
 
                 const tempFiveValue = day.main.temp;
 
@@ -204,7 +206,7 @@ function searchFiveDay(city) {
                 dateDisplay.textContent = dateString
 
                 const weatherDisplay = card.querySelector(".weatherFive")
-                weatherDisplay.src = "http://openweathermap.org/img/wn/" + weatherFiveValue + ".png"
+                weatherDisplay.src = icon
 
                 const tempDisplay = card.querySelector(".tempFive")
                 tempDisplay.textContent = "Temp: " + tempFiveValue + "° F"
