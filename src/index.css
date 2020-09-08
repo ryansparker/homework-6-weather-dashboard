@@ -29,7 +29,6 @@ body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
-    line-height: 1.6;
     background-color: bisque;
     height: 100vh;
     overflow: hidden;
@@ -74,12 +73,12 @@ h5 { cursor: pointer; }
     flex-direction: row;
 }
 
-input[type='text'] { font-size: 20px; }
+input[type='text'] { font-size: 18px; }
 
 #searchBar {
     border: 1px solid var(--clr-accent-bg-mid);
     background: white;
-    padding-left: 15px;
+    padding-left: 16px;
 }
 
 #searchBar:focus {
@@ -90,9 +89,9 @@ input[type='text'] { font-size: 20px; }
     border: 0px;
     background: var( --clr-accent);
     color: white;
-    padding:15px;
+    padding:10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 #subBtn:hover {
@@ -143,7 +142,7 @@ input[type='text'] { font-size: 20px; }
     margin: 0px;
     height: 100%;
     width: 100%;
-    line-height: .9;
+    line-height: 1.18;
     letter-spacing: -10px;
     z-index: 2; 
 }
@@ -156,7 +155,7 @@ input[type='text'] { font-size: 20px; }
     padding:0;
     margin: 0;;
     width: 600px;
-    height: 350px;
+    height: 300px;
 }
 
 .section-place {
@@ -192,12 +191,6 @@ input[type='text'] { font-size: 20px; }
     margin: 0 15px 0 0;
 }
 
-/* .day-date {
-    margin: 0 20px 0 0;
-    padding: 0 15px 0 15px;
-    border-left: 1px solid var(--clr-accent);
-    border-right: 1px solid var(--clr-accent);
-} */
 
 .weather-icon-row {
     width: 600px;
@@ -221,8 +214,8 @@ input[type='text'] { font-size: 20px; }
     justify-content: space-evenly;
     text-align: end;
     position: absolute; 
-    bottom: 0;
     width: 600px;
+    height: 350px;
 }
 
 .section-title {
@@ -279,6 +272,7 @@ align-content: center;
     width: 100%;
     transform: translateY(75%);
     transition: transform 350ms ease;
+    z-index: 2;
 }
 
 .show-upcoming-weather {
