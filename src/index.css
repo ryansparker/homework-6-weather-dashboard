@@ -28,7 +28,7 @@
 body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     background-color: bisque;
     height: 100vh;
     overflow: hidden;
@@ -50,7 +50,7 @@ h5 { cursor: pointer; }
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background-image: url("./bg-windy1.jpg");
+    background-image: url("assets/bg-clear.jpg");
     background-repeat: no-repeat;
     background-size:100% 100%;
 }
@@ -65,7 +65,7 @@ h5 { cursor: pointer; }
 
 .search {
     font-size: 20px;
-    margin: 0 35px 0 0;
+    margin: 0 20px 0 0;
 }
 
 .search-input {
@@ -112,11 +112,7 @@ input[type='text'] { font-size: 18px; }
     margin-top: 20px;
 }
 
-.searched-city-button {
-    background-color: pink;
-    color:red;
-    font-size: 100px;
-}
+
 
 .place-info {
     background: var(--clr-menu-bg);
@@ -236,13 +232,13 @@ input[type='text'] { font-size: 18px; }
 
 .section-title.humidity{
     border-right: 1px solid var(--clr-accent);
-    padding: 0 40px 0 10px;
+    padding: 0 30px 0 10px;
   
 }
 
 .section-title.wind{
     border-right: 1px solid var(--clr-accent);
-    padding: 0 35px 0 5px;
+    padding: 0 28px 0 5px;
 }
 
 .section-title.uv-index{
@@ -284,7 +280,7 @@ margin-bottom: 10px;
     position: absolute;
     bottom: 0;
     width: 100%;
-    transform: translateY(82%);
+    transform: translateY(78%);
     transition: transform 350ms ease;
     border-top: 1px solid var(--clr-accent);
     z-index: 2;
@@ -325,7 +321,7 @@ margin-bottom: 10px;
     text-transform: uppercase;
     color: var(--clr-accent);
     letter-spacing: 3px;
-    margin: 25px 0 16px 0;
+    margin: 25px 0 25px 0;
 }
 
 .upcoming-day {

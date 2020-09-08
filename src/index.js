@@ -27,14 +27,35 @@ const humFivep = document.getElementsByClassName("humFive");
 const cards = document.querySelectorAll(".fivedayCard");
 
 const iconMap = {
-    Cloud: {
-        background: 'bg-cloudy1.jpg',
+    Thunderstorm: {
+        background: 'assets/bg-thunderstorm.jpg',
         icon: 'cloud.svg'
     },
+    Drizzle: {
+        background: 'assets/bg-drizzle.jpg',
+        icon: 'assets/drizzle.svg'
+    },
     Rain: {
-        background: ['bg-rainy1.jpg', 'bg-rainy2.jpg'],
-        icon: 'rain.svg'
+        background: 'assets/bg-rain.jpg',
+        icon: 'assets/rain.svg'
+    },
+    Snow: {
+        background: 'assets/bg-snow.jpg',
+        icon: 'assets/snow.svg'
+    },
+    Atmosphere: {
+        background: 'assets/bg-atmosphere.jpg',
+        icon: 'assets/atmosphere.svg'
+    },
+    Clear: {
+        background: 'assets/bg-clear.jpg',
+        icon: 'assets/clear.svg'
+    },
+    Clouds: {
+        background: 'assets/bg-clouds.jpg',
+        icon: 'assets/clouds.svg'
     }
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
